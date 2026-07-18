@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수 비교하기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false;">
+    <div class="app-container">
+        <header class="top-bar glassmorphism">
+            <h1 class="title">🌟 수 비교하기 🌟</h1>
+            <div class="controls">
+                <button id="btn-mode" class="btn btn-blue">모드: 일치</button>
+                <button id="btn-toggle-number" class="btn btn-purple">숫자 보기: 끄기</button>
+                <button id="btn-new-problem" class="btn btn-green">새로운 문제</button>
+            </div>
+        </header>
+
+        <main class="main-area">
+            <div class="side-panel glassmorphism clickable" id="left-panel" onclick="checkAnswer('left')">
+                <div class="visual-container" id="left-visual"></div>
+                <div class="number-display" id="left-number-display"></div>
+            </div>
+
+            <div class="middle-spacer">
+                <h2>어느 쪽이<br>더 클까요?</h2>
+            </div>
+
+            <div class="side-panel glassmorphism clickable" id="right-panel" onclick="checkAnswer('right')">
+                <div class="visual-container" id="right-visual"></div>
+                <div class="number-display" id="right-number-display"></div>
+            </div>
+        </main>
+
+        <div id="feedback-overlay" class="hidden">
+            <div id="feedback-message"></div>
+        </div>
+    </div>
+    
+    <!-- Canvas for confetti -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
