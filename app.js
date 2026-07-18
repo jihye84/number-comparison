@@ -3,7 +3,7 @@ let state = {
     leftNumber: 0,
     rightNumber: 0,
     mode: 'match', // 'match' or 'diff'
-    showNumber: false,
+    showNumber: 'off',
     leftType: 'stones',
     rightType: 'stones'
 };
@@ -36,9 +36,19 @@ function setupEventListeners() {
     });
 
     btnToggleNumber.addEventListener('click', () => {
-        state.showNumber = !state.showNumber;
-        btnToggleNumber.textContent = `숫자 보기: ${state.showNumber ? '켜짐' : '끄기'}`;
-        btnToggleNumber.className = `btn ${state.showNumber ? 'btn-green' : 'btn-purple'}`;
+        if (state.showNumber === 'off') {
+            state.showNumber = 'on';
+            btnToggleNumber.textContent = '숫자 보기: 켜짐';
+            btnToggleNumber.className = 'btn btn-green';
+        } else if (state.showNumber === 'on') {
+            state.showNumber = 'only';
+            btnToggleNumber.textContent = '숫자만 보기';
+            btnToggleNumber.className = 'btn btn-blue';
+        } else {
+            state.showNumber = 'off';
+            btnToggleNumber.textContent = '숫자 보기: 끄기';
+            btnToggleNumber.className = 'btn btn-purple';
+        }
         updateNumberDisplay();
     });
 
@@ -48,7 +58,7 @@ function setupEventListeners() {
     leftVisual.addEventListener('click', (e) => {
         if (e.target.closest('.manipulatives-wrapper')) {
             e.stopPropagation();
-            if (!state.showNumber) {
+            if (state.showNumber === 'off') {
                 leftNumberDisplay.classList.add('show');
             }
         }
@@ -57,7 +67,7 @@ function setupEventListeners() {
     rightVisual.addEventListener('click', (e) => {
         if (e.target.closest('.manipulatives-wrapper')) {
             e.stopPropagation();
-            if (!state.showNumber) {
+            if (state.showNumber === 'off') {
                 rightNumberDisplay.classList.add('show');
             }
         }
@@ -106,12 +116,21 @@ function updateNumberDisplay() {
     leftNumberDisplay.textContent = state.leftNumber;
     rightNumberDisplay.textContent = state.rightNumber;
     
-    if (state.showNumber) {
+    if (state.showNumber === 'on') {
         leftNumberDisplay.classList.add('show');
         rightNumberDisplay.classList.add('show');
+        leftVisual.style.display = '';
+        rightVisual.style.display = '';
+    } else if (state.showNumber === 'only') {
+        leftNumberDisplay.classList.add('show');
+        rightNumberDisplay.classList.add('show');
+        leftVisual.style.display = 'none';
+        rightVisual.style.display = 'none';
     } else {
         leftNumberDisplay.classList.remove('show');
         rightNumberDisplay.classList.remove('show');
+        leftVisual.style.display = '';
+        rightVisual.style.display = '';
     }
 }
 

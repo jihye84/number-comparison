@@ -152,8 +152,8 @@ body {
 /* Go Stones (바둑돌) */
 .stone-group {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 25px);
+    grid-template-rows: repeat(2, 25px);
     gap: 4px;
     background: rgba(0, 0, 0, 0.05);
     padding: 8px;
@@ -170,11 +170,13 @@ body {
 }
 
 .stone-loose-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 25px);
+    grid-auto-rows: 25px;
     gap: 4px;
+    padding: 8px;
+    border: 2px solid transparent;
     align-content: flex-start;
-    max-width: 160px;
 }
 
 /* Connecting Blocks (연결블럭) */
@@ -210,17 +212,17 @@ body {
 
 /* Base Ten Blocks (수모형) */
 .base-ten-group {
-    width: 30px;
-    height: 200px; /* 10 units high */
-    background-image: linear-gradient(#FDCB6E 19px, #E1B12C 20px);
-    background-size: 100% 20px;
+    width: 25px;
+    height: 250px; /* 10 units high */
+    background-image: linear-gradient(#FDCB6E 24px, #E1B12C 25px);
+    background-size: 100% 25px;
     border: 2px solid #E1B12C;
     box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
 }
 
 .base-one {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: #FDCB6E;
     border: 2px solid #E1B12C;
     box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
