@@ -30,7 +30,7 @@ function init() {
 function setupEventListeners() {
     btnMode.addEventListener('click', () => {
         state.mode = state.mode === 'match' ? 'diff' : 'match';
-        btnMode.textContent = `모드: ${state.mode === 'match' ? '일치' : '다름'}`;
+        btnMode.textContent = `모형: ${state.mode === 'match' ? '일치' : '다름'}`;
         btnMode.className = `btn ${state.mode === 'match' ? 'btn-blue' : 'btn-purple'}`;
         generateNewProblem();
     });
