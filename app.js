@@ -38,7 +38,7 @@ function setupEventListeners() {
     btnToggleNumber.addEventListener('click', () => {
         if (state.showNumber === 'off') {
             state.showNumber = 'on';
-            btnToggleNumber.textContent = '숫자 보기: 켜짐';
+            btnToggleNumber.textContent = '숫자 보기: 켜기';
             btnToggleNumber.className = 'btn btn-green';
         } else if (state.showNumber === 'on') {
             state.showNumber = 'only';
