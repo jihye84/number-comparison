@@ -72,6 +72,20 @@ function setupEventListeners() {
             }
         }
     });
+
+    leftNumberDisplay.addEventListener('click', (e) => {
+        if (state.showNumber === 'only') {
+            e.stopPropagation();
+            leftVisual.style.display = '';
+        }
+    });
+
+    rightNumberDisplay.addEventListener('click', (e) => {
+        if (state.showNumber === 'only') {
+            e.stopPropagation();
+            rightVisual.style.display = '';
+        }
+    });
 }
 
 function getRandomInt(min, max) {
@@ -121,16 +135,28 @@ function updateNumberDisplay() {
         rightNumberDisplay.classList.add('show');
         leftVisual.style.display = '';
         rightVisual.style.display = '';
+        leftNumberDisplay.title = "";
+        rightNumberDisplay.title = "";
+        leftNumberDisplay.style.cursor = "default";
+        rightNumberDisplay.style.cursor = "default";
     } else if (state.showNumber === 'only') {
         leftNumberDisplay.classList.add('show');
         rightNumberDisplay.classList.add('show');
         leftVisual.style.display = 'none';
         rightVisual.style.display = 'none';
+        leftNumberDisplay.title = "눌러서 모형 확인하기!";
+        rightNumberDisplay.title = "눌러서 모형 확인하기!";
+        leftNumberDisplay.style.cursor = "pointer";
+        rightNumberDisplay.style.cursor = "pointer";
     } else {
         leftNumberDisplay.classList.remove('show');
         rightNumberDisplay.classList.remove('show');
         leftVisual.style.display = '';
         rightVisual.style.display = '';
+        leftNumberDisplay.title = "";
+        rightNumberDisplay.title = "";
+        leftNumberDisplay.style.cursor = "default";
+        rightNumberDisplay.style.cursor = "default";
     }
 }
 
